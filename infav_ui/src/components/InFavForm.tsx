@@ -12,15 +12,20 @@ import {
     Typography,
     CircularProgress
 } from '@mui/joy';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const InFavForm = () => {
+
+    const location = useLocation();
+    const { userId } = location.state;
+    console.log(userId)
 
     const navigate = useNavigate();
 
     const idToken = localStorage.getItem('idToken');
 
     const [formData, setFormData] = useState({
+        userId: '',
         name: '',
         profession: '',
         currentWork: '',
@@ -39,6 +44,16 @@ const InFavForm = () => {
         timeline: '',
         analyticsFiles: [] as File[]  // Type explicitly as an array of File objects
     });
+
+    // Use useEffect to set the userId when location.state is available
+    useEffect(() => {
+        if (location.state && location.state.userId) {
+            setFormData(prevData => ({
+                ...prevData,
+                userId: location.state.userId
+            }));
+        }
+    }, [location.state]);
 
     useEffect(() => {
         console.log('FormData:', formData);
@@ -112,6 +127,7 @@ const InFavForm = () => {
         const formJson = Object.fromEntries(formElements.entries());
 
 
+        formJson.userId = formData.userId;
 
         // Include file names in the JSON
         //   formJson.analyticsFiles = formData.analyticsFiles.map(file => file.name);

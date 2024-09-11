@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import {Box, Button, Input, Typography, Alert, Divider, Stack} from '@mui/joy';
 import {Link, useNavigate} from "react-router-dom";
-import { auth } from "../firebaseConfig.ts";
+import { auth } from "../firebaseConfig"; // Assuming you're using Firestore
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 const Login = () => {
 
@@ -18,9 +18,30 @@ const Login = () => {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             console.log('User logged in:', userCredential.user);
             const user = userCredential.user;
+            const userId = user.uid;
             const idToken = await user.getIdToken();
             localStorage.setItem('idToken', idToken);
-            navigate('/form');
+            // Now check if the user has posts or persona_id
+            // Step 1: Make an API request to your backend to get persona_id and posts
+            const response = await fetch(`https://infav-906977611020.us-central1.run.app/get-persona-and-posts/${user.uid}`);
+            const data = await response.json();
+
+            console.log(data)
+
+            if (data.personaId && data.generatedPosts.length > 0) {
+                // Step 2: Navigate to /submittedForm with personaId and generatedPosts
+                navigate('/submitted', {
+                    state: { personaId: data.personaId, generatedPosts: data.generatedPosts }
+                });
+            } else {
+                // Navigate to form if no persona or posts found
+                navigate('/form', {
+                    state : { userId: userId }
+                });
+            }
+
+
+            //  navigate('/form');
         } catch (err: any) {
             setError(err.message);
         }

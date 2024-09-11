@@ -12,7 +12,7 @@ export function calculateDate(input: string): Date {
 
     if (timeline === 'weeks' || timeline === 'week') {
         return addWeeks(today, parsedNumber);
-    } else if (timeline === 'months') {
+    } else if (timeline === 'months' || timeline === 'month') {
         return addMonths(today, parsedNumber);
     } else {
         throw new Error('Invalid timeline. Please specify "weeks" or "months".');

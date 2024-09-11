@@ -27,7 +27,7 @@ const AddPostModal: React.FC<{ onSubmit: (newPostDetails: any) => Promise<void> 
 
     return (
         <>
-            <Button onClick={handleOpen}>Add Post</Button>
+            <Button onClick={handleOpen}>Add Task Completion Post</Button>
             <Modal open={open} onClose={handleClose}>
                 <Box
                     sx={{

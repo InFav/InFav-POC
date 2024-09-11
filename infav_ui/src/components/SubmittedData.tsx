@@ -884,6 +884,7 @@ const SubmittedData: React.FC = () => {
                             </Typography>
                             <Typography sx={{ mb: 2 }}>
                                 <strong>Type of Engagement:</strong> {selectedEvent.engagementType}
+                                <strong>Type of Engagement:</strong> {selectedEvent.engagementType}
                             </Typography>
                             <Typography sx={{ mb: 2 }}>
                                 <strong>Description:</strong> {selectedEvent.description}

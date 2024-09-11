@@ -22,6 +22,7 @@ type GeneratedPosts = {
 router.post('/submit-form', async (req, res) => {
     const formData = req.body;
     console.log('Received form data:', formData);
+    console.log(formData.userId)
 
     // Extract filenames from the analytics files array, if present
     const analyticsFileNames = Array.isArray(formData.analyticsFiles)
@@ -31,9 +32,10 @@ router.post('/submit-form', async (req, res) => {
     try {
         // Insert form data into the persona_input table
         const insertResult = await pool.query(
-            `INSERT INTO persona_input (name, profession, current_work, goal, journey, company_size, industry_target, linked_profiles, target_type, favorite_posts, best_posts, posts_to_create, post_purpose, inspiring_companies, timeline, analytics_files)
-             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING id`,
+            `INSERT INTO persona_input (user_id, name, profession, current_work, goal, journey, company_size, industry_target, linked_profiles, target_type, favorite_posts, best_posts, posts_to_create, post_purpose, inspiring_companies, timeline, analytics_files)
+             VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING id`,
             [
+                formData.userId,
                 formData.name,
                 formData.profession,
                 formData.currentWork,
