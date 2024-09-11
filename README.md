@@ -4,6 +4,22 @@ Make sure you have the following installed on your system:
 
 - **Node.js**: You can download it from [Node.js official website](https://nodejs.org/). Choose the **LTS version** for stability.
 - **npm** (Node Package Manager): This is automatically installed when you install Node.js.
+# Clone the Repository
+
+To get the project on your local machine, follow these steps:
+
+1. Open your **Terminal** (macOS/Linux) or **Command Prompt** (Windows).
+2. Run the following command to clone the repository:
+
+```bash
+git clone https://github.com/InFav/InFav-POC.git
+```
+
+Once the repository is cloned, navigate into the project folder:
+
+```bash
+cd InFav-POC
+```
 
 # Frontend Setup (infav_ui folder)
 
@@ -76,7 +92,56 @@ The backend server should now be running at:
 http://localhost:8080
 ```
 
+# Create a Branch and Push Changes for Review
+
+Once you've set up the frontend and backend, and made your changes to the code, follow these steps to create a new branch and push the changes to the remote repository for review.
+
+### Step 1: Create a New Branch
+
+Open your **Terminal** (macOS/Linux) or **Command Prompt** (Windows), and ensure you are inside the project folder:
+
+```bash
+cd InFav-POC
+```
+Create a new branch to work on. Replace your-branch-name with a name that describes your work:
+
+```bash
+git checkout -b your-branch-name
+```
+Stage and Commit Your Changes
+
+After making your code changes, stage the files for commit:
+
+```bash
+git add .
+```
+
+Commit the staged changes with a descriptive message:
+
+```bash
+git commit -m "Your commit message"
+```
+Push the Branch to GitHub
+
+Push your newly created branch to the remote repository:
+
+```bash
+git push origin your-branch-name
+```
+Create a Pull Request
+
+Go to the repository on GitHub: https://github.com/InFav/InFav-POC.git.
+
+After pushing your branch, you will see an option to create a Pull Request. Click on the "Compare & pull request" button.
+Add a meaningful title and description to your pull request, and then submit it for review.
+
+Your team will now be able to review the changes before merging them into the main branch.
+
 # Summary of Commands
+
+- **Clone Repository**:
+  - Clone the repository: `git clone https://github.com/InFav/InFav-POC.git`
+  - Navigate to the project folder: `cd InFav-POC`
 
 - **Frontend**:
   - Navigate to `infav_ui`: `cd infav_ui`
@@ -89,3 +154,12 @@ http://localhost:8080
   - Install `ts-node` if needed: `npm install -g ts-node`
   - Run backend: `ts-node server/server.ts`
   - Access backend at: `http://localhost:8080`
+
+- **Create and Push a Branch**:
+  - Create a new branch: `git checkout -b your-branch-name`
+  - Stage changes: `git add .`
+  - Commit changes: `git commit -m "Your commit message"`
+  - Push the branch: `git push origin your-branch-name`
+
+- **Create a Pull Request**:
+  - Go to the repository on GitHub and create a pull request for your branch.
