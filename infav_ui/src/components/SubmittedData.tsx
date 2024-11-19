@@ -607,6 +607,32 @@ const SubmittedData: React.FC = () => {
     };
 
     return (
+        <div className="min-h-screen bg-gray-50">
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-sm z-50 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16">
+              {/* Logo */}
+              <a href="/" className="flex items-center">
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-500 hover:to-purple-500 transition-colors">
+                  Navigator Hub
+                </h1>
+              </a>
+            </div>
+          </div>
+        </nav>
+  
+        {/* Main Content */}
+        <div className="pt-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          {/* Welcome Header */}
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Your Content Calendar</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Here's your AI-generated posting schedule. Add events, customize posts, and manage your content all in one place.
+              Click on any post to edit or regenerate it.
+            </p>
+          </div>
+
         <Box sx={{ padding: 2, backgroundColor: '#fff', color: '#000' }}>
 
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
@@ -634,6 +660,8 @@ const SubmittedData: React.FC = () => {
             <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0 }}>
                 {renderCalendar()}
             </Box>
+            </Box>
+            </div>
 
             {/* Modal for adding events */}
             <Modal open={openModalEvent} onClose={handleCloseModalEvent}>
@@ -899,7 +927,9 @@ const SubmittedData: React.FC = () => {
                     )}
                 </Box>
             </Modal>
-        </Box>
+            </div>
+
+ 
     );
 };
 

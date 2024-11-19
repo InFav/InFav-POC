@@ -198,6 +198,8 @@ const InFavForm = () => {
                 </Box>
             )}
             <Typography level="h2" textAlign="center" mb={2}>
+            👋 Let Us know more about you!
+                <br />
                 Enhance Your Professional Influence
             </Typography>
 
